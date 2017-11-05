@@ -10,7 +10,6 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 import setherith.game.entities.Player;
 import setherith.game.gfx.Colours;
-import setherith.game.gfx.Font;
 import setherith.game.gfx.Screen;
 import setherith.game.gfx.SpriteSheet;
 import setherith.game.level.Level;
@@ -153,7 +152,6 @@ public class Game extends Canvas implements Runnable {
             if (x % 10 == 0 && x != 0) {
                 colour = Colours.get(-1, -1, -1, 500);
             }
-            Font.render((x % 10) + "", screen, 0 + (x * 8), 0, colour);
         }
         
         level.renderEntities(screen);

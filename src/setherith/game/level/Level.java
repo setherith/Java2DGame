@@ -3,7 +3,6 @@ package setherith.game.level;
 import java.util.ArrayList;
 import java.util.List;
 import setherith.game.entities.Entity;
-import setherith.game.entities.Player;
 import setherith.game.gfx.Screen;
 import setherith.game.level.tiles.Tile;
 
@@ -24,12 +23,7 @@ public class Level {
     public void generateLevel() {
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                if (x * y % 10 < 5) {
-                    tiles[x + y * width] = Tile.GRASS.getId();
-                } else {
-                    tiles[x + y * width] = Tile.STONE.getId();
-                }
-                
+                tiles[x + y * width] = Tile.GRASS.getId();
             }
         }
     }
