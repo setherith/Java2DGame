@@ -1,5 +1,9 @@
 package setherith.game.level;
 
+import java.util.ArrayList;
+import java.util.List;
+import setherith.game.entities.Entity;
+import setherith.game.entities.Player;
 import setherith.game.gfx.Screen;
 import setherith.game.level.tiles.Tile;
 
@@ -8,6 +12,7 @@ public class Level {
     private byte[] tiles;
     public int width;
     public int height;
+    public List<Entity> entities = new ArrayList<Entity>();
     
     public Level(int width, int height) {
         tiles = new byte[width * height];
@@ -30,7 +35,15 @@ public class Level {
     }
     
     public void tick() {
-        
+        for (Entity e : entities) {
+            e.tick();
+        }
+    }
+    
+    public void renderEntities(Screen screen) {
+        for (Entity e : entities) {
+            e.render(screen);
+        }
     }
     
     public void renderTiles(Screen screen, int xOffset, int yOffset) {
@@ -51,5 +64,9 @@ public class Level {
     private Tile getTile(int x, int y) {
         if (x < 0 || x > width || y < 0 || y > height) return Tile.VOID;
         return Tile.tiles[tiles[x + y * width]];
+    }
+
+    public void addEntity(Entity entity) {
+        this.entities.add(entity);
     }
 }
